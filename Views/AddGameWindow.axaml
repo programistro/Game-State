@@ -1,0 +1,35 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+		xmlns:vm="using:Game_State.ViewModels"
+        mc:Ignorable="d" d:DesignWidth="600" d:DesignHeight="200" Width="600" Height="200"
+        x:Class="Game_State.AddGameWindow"
+        Title="AddGameWindow" TransparencyLevelHint="AcrylicBlur"
+        ExtendClientAreaToDecorationsHint="True">
+
+	<Design.DataContext>
+		<vm:MainWindowViewModel/>
+	</Design.DataContext>
+	
+	<Grid>
+		<Panel>
+			<ExperimentalAcrylicBorder IsHitTestVisible="False">
+				<ExperimentalAcrylicBorder.Material>
+					<ExperimentalAcrylicMaterial
+						BackgroundSource="Digger"
+						TintColor="Black"
+						TintOpacity="1"
+						MaterialOpacity="0.65" />
+				</ExperimentalAcrylicBorder.Material>
+			</ExperimentalAcrylicBorder>
+
+			<Grid>
+				<TextBox Height="30" Margin="5,50,5,0" VerticalAlignment="Top" Text="{Binding Text}"/>
+				
+				<Button Content="Add" VerticalAlignment="Bottom" HorizontalAlignment="Right"
+						Margin="8" Command="{Binding AddGameCommand}" CommandParameter="AddTe"/>
+			</Grid>
+		</Panel>
+	</Grid>
+</Window>

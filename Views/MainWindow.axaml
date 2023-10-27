@@ -1,0 +1,51 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:Game_State.ViewModels"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:Class="Game_State.Views.MainWindow"
+        x:DataType="vm:MainWindowViewModel"
+        Icon="/Assets/avalonia-logo.ico"
+        Title="Game_State" TransparencyLevelHint="AcrylicBlur"
+           Background="Transparent"
+
+           ExtendClientAreaToDecorationsHint="True">
+
+    <Design.DataContext>
+        <vm:MainWindowViewModel/>
+    </Design.DataContext>
+
+	<Grid>
+		<Panel>
+			<ExperimentalAcrylicBorder IsHitTestVisible="False">
+				<ExperimentalAcrylicBorder.Material>
+					<ExperimentalAcrylicMaterial
+						BackgroundSource="Digger"
+						TintColor="Black"
+						TintOpacity="1"
+						MaterialOpacity="0.65" />
+				</ExperimentalAcrylicBorder.Material>
+			</ExperimentalAcrylicBorder>
+		</Panel>
+		<Menu Margin="0,0,0,0" VerticalAlignment="Top" Width="100" HorizontalAlignment="Left">
+			<MenuItem Header="File">
+				<MenuItem Header="Add game" Command="{Binding ShowWindowCommand}"/>
+				<MenuItem Header="Delete game"/>
+				<Separator/>
+				<MenuItem Header="Exit" Click="MenuItemExit_Click"/>
+			</MenuItem>
+		</Menu>
+		<DataGrid Name="MainDataGrid" AutoGenerateColumns="False" ItemsSource="{Binding Games}"
+			  FontSize="18" GridLinesVisibility="All" BorderThickness="1" CanUserResizeColumns="True"
+			  CanUserSortColumns="True" CanUserReorderColumns="True" Margin="0,35,0,0">
+			<DataGrid.Columns>
+				<DataGridTextColumn Header="Name"  Binding="{Binding Name}" FontSize="18"/>
+				<DataGridTextColumn Header="Winner" Binding="{Binding Winner}" FontSize="18"/>
+				<DataGridTextColumn Header="Loss" Binding="{Binding Dinner}" FontSize="18"/>
+				<DataGridTextColumn Header="Percentage of wins" Binding="{Binding Win}" FontSize="18"/>
+			</DataGrid.Columns>
+		</DataGrid>
+	</Grid>
+
+</Window>
